@@ -1,10 +1,5 @@
-import './App.css'
-
 function App() {
-  return (
-   <>
-   </>
-  )
+  return <>Niroha</>;
 }
 
-export default App
+export default App;
