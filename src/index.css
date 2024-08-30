@@ -67,3 +67,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+.leaf-shape {
+  @apply rounded-tl-[50px] rounded-tr-[0px] rounded-br-[50px] rounded-bl-[0px] px-7 py-2;
+  clip-path: ellipse(70% 50% at 50% 50%);
+}
