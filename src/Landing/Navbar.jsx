@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import NirohaLog from "../assets/niroha.png"
+import NirohaLog from "/icons/niroha.png"
 
 const navListArr = [
   {
