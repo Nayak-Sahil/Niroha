@@ -72,3 +72,27 @@
   @apply rounded-tl-[50px] rounded-tr-[0px] rounded-br-[50px] rounded-bl-[0px] px-7 py-2;
   clip-path: ellipse(70% 50% at 50% 50%);
 }
+
+.glassmorphism{
+  @apply border border-[#f9fafb24] bg-gray-100 rounded-lg backdrop-filter backdrop-blur-sm shadow-lg bg-opacity-5
+}
+
+.btn-gradient{
+  @apply bg-gradient-to-r from-lime-200 to-primary hover:bg-gradient-to-tr  hover:from-primary hover:to-lime-200 ease-in-out
+}
+
+::-webkit-scrollbar {
+  /* Customize the scrollbar width */
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  /* Customize the scrollbar track */
+  background: #363636; 
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  /* Customize the scrollbar thumb */
+  background: #e8e8e8; 
+}
