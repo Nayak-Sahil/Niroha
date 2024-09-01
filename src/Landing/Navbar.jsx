@@ -21,15 +21,15 @@ const navListArr = [
   },
   {
     text: "Explore Plants",
-    link: "/tour"
+    link: "/explore-plants"
   },
   {
     text: "Virtual Farm",
-    link: "/guide"
+    link: "/virtual-farm"
   },
   {
     text: "AI Plants Identification",
-    link: "/guide"
+    link: "/identify"
   }
 ]
 
