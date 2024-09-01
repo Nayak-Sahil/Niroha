@@ -15,17 +15,17 @@ import React from "react";
 
 export default function SearchPlants() {
   return (
-    <fieldset className="w-[95%] h-[20%] flex justify-center items-center p-4 glassmorphism mb-5 border-none">
+    <fieldset className="w-[95%] h-[20%] flex justify-center items-center p-4 glassmorphism rounded-lg mb-5 border-none">
       <legend className="-ml-1 px-3 text-base tracking-wider font-medium text-white">
         Explore the Healing Power of Plants and Herbs
       </legend>
       <div className="w-full h-[20%] flex items-center justify-between">
-        <div className="w-max flex items-center">
+        <div className="w-[400px] flex items-center relative">
           <Input
-            className="w-[400px] mr-5 glassmorphism capitalize text-base py-2 rounded-full text-white px-3 shadow-lg outline-none focus-visible:ring-offset-0 focus-visible:ring-0 border-none"
+            className="w-full mr-5 glassmorphism rounded-full capitalize text-base py-3 text-white px-4 shadow-lg outline-none focus-visible:ring-offset-0 focus-visible:ring-0 border-none"
             placeholder="Search your herbal plant by name!"
           />
-          <Button variant="secondary" className="btn-gradient text-black">
+          <Button variant="secondary" className="btn-gradient text-black px-5 absolute right-1 rounded-full">
             <Leaf className="w-4 h-4 mr-2" /> Search
           </Button>
         </div>

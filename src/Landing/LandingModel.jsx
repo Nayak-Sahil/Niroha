@@ -52,7 +52,7 @@ export default function LandingModel() {
           </Button>
         </div>
       </div>
-      <div className="relative flex justify-center border w-[350px] h-[300px] bg-white glassmorphism">
+      <div className="relative flex justify-center border w-[350px] h-[300px] bg-white glassmorphism rounded-lg">
         <Badge
           variant="secondary"
           className="absolute top-5 right-5 text-black shadow-md"
