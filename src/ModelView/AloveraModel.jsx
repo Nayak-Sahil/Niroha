@@ -1,7 +1,7 @@
 import { useGLTF } from '@react-three/drei'
 
 export default function AloveraModel() {
-  const {scene} = useGLTF("/PlantsModels/Alovera.glb");
+  const {scene} = useGLTF("/public/PlantsModels/Aloevera.glb");
   return (
     <primitive object={scene} />
   )
