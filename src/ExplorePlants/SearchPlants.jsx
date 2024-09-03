@@ -30,13 +30,13 @@ export default function SearchPlants({ onSearch, clearSearch }) {
             onChange={(event) => setSearchedString(event.target.value)}
           />
           {
-            searchedString.length &&
+            searchedString.length ?
             <button
               className="absolute right-[120px]"
               onClick={() => { setSearchedString(""); clearSearch() }}
             >
               <X className="text-white border-none w-4 h-4" />
-            </button>
+            </button> : ""
           }
           <Button variant="secondary" className="btn-gradient text-black px-5 absolute right-1 rounded-full"
             onClick={() => onSearch(searchedString)}

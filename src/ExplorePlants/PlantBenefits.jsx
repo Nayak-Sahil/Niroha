@@ -23,7 +23,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
-export default function PlantBenefits() {
+export default function PlantBenefits({ ayushBenefits, healthBenefits }) {
   return (
     <div className="w-[400px] h-max flex justify-between items-center">
       <BenefitDialog
@@ -43,17 +43,17 @@ export default function PlantBenefits() {
             <AyushCard
               icon={<Salad className="h-4 w-4 mr-2" />}
               title="Ayurveda"
-              content="Used for calming the mind, improving digestion, and reducing inflammation."
+              content={ayushBenefits.ayurveda}
             />
             <AyushCard
               icon={<Milk className="h-4 w-4 mr-2" />}
               title="Unani"
-              content="Used to treat digestive disorders, anxiety, and skin conditions."
+              content={ayushBenefits.unani}
             />
             <AyushCard
               icon={<Pill className="h-4 w-4 mr-2" />}
               title="Siddha"
-              content="Used for promoting relaxation, digestive health, and treating inflammation."
+              content={ayushBenefits.siddha}
             />
           </>
         }
@@ -72,21 +72,15 @@ export default function PlantBenefits() {
         }
         content={
           <>
-            <AyushCard
-              icon={<Cross className="h-4 w-4" />}
-              title=""
-              content="Promotes relaxation and reduces anxiety."
-            />
-            <AyushCard
-              icon={<Cross className="h-4 w-4" />}
-              title=""
-              content="Supports digestive health and relieves indigestion."
-            />
-            <AyushCard
-              icon={<Cross className="h-4 w-4" />}
-              title=""
-              content="Acts as an anti-inflammatory and antispasmodic agent."
-            />
+            {healthBenefits.map((benefit) => {
+              return (
+                <AyushCard
+                  icon={<Cross className="h-4 w-4" />}
+                  title=""
+                  content={benefit}
+                />
+              );
+            })}
           </>
         }
       />
@@ -120,20 +114,13 @@ export const AyushCard = ({ icon, title, content }) => {
         className="text-black text-xs px-3 rounded-full absolute -top-3 left-5"
         variant="secondary"
       >
-        {icon}{title}
+        {icon}
+        {title}
       </Badge>
       <p>{content}</p>
     </div>
   );
 };
-
-// export const HealthBenefitsListCard = ()=>{
-//     return(
-//         <ul>
-//             <li></li>
-//         </ul>
-//     )
-// }
 
 export const BenefitButton = ({ icon, text }) => {
   return (

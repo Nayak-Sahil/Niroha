@@ -38,7 +38,17 @@ const router = createBrowserRouter([
           },
           {
             path: ":plantsID",
-            element: <PlantDetails />
+            loader: async ({ request, params }) => {
+              try{
+                const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/plantid/${params.plantsID}`);
+                const result = await response.json();
+                return result
+              }catch(err){
+                document.write("something went wrong...");
+              }
+            },
+            element: <PlantDetails />,
+            // errorElement: "Something Went Wrong"
           }
         ]
       },

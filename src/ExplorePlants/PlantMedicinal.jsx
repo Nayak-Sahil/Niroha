@@ -1,7 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
-import { Activity, Bean, Citrus, Leaf, ShieldPlus, TreePalm } from "lucide-react";
-export default function PlantMedicinal() {
+import {
+  Activity,
+  Bean,
+  Citrus,
+  Leaf,
+  PillBottle,
+  ShieldPlus,
+  TreePalm,
+} from "lucide-react";
+export default function PlantMedicinal({
+  plantParts,
+  activeCompunds,
+  therapeutics,
+  dosages,
+}) {
+  function getBadgeIcon(plantParts) {
+    switch (plantParts) {
+      case "Whole plants":
+        return (<TreePalm className="h-4 w-4 mr-2" />);
+        break;
+      case "Leaves":
+        return (<Leaf className="h-4 w-4 mr-2" />);
+        break;
+      case "Seeds":
+        return (<Bean className="h-4 w-4 mr-2" />);
+        break;
+      case "Fruits":
+        return (<Citrus className="h-4 w-4 mr-2" />);
+        break;
+      default:
+        return (<PillBottle className="h-4 w-4 mr-2" />);
+    }
+  }
+
   return (
     <div className="w-[400px] h-full p-4 flex flex-col items-center justify-between">
       <fieldset className="w-full h-max p-3 flex items-center justify-between glassmorphism rounded-lg shadow-lg flex-wrap gap-1 gap-y-2">
@@ -9,44 +41,36 @@ export default function PlantMedicinal() {
           Part used in medicinal
         </legend>
 
-        <PlantPart
-          icon={<TreePalm className="h-4 w-4 mr-2" />}
-          text="Whole Plant"
-        />
-        <PlantPart icon={<Leaf className="h-4 w-4 mr-2" />} text="Leaves" />
-        <PlantPart icon={<Bean className="h-4 w-4 mr-2" />} text="Seeds" />
-        <PlantPart icon={<Citrus className="h-4 w-4 mr-2" />} text="Fruits" />
+        {plantParts.split(",").map((elem) => {
+          return <PlantPart icon={getBadgeIcon(elem)} text={elem} />;
+        })}
       </fieldset>
       <fieldset className="w-full h-max p-3 flex items-center justify-evenly glassmorphism rounded-lg shadow-lg flex-wrap gap-1 gap-y-2">
         <legend className="text-primary px-3 font-medium text-[14px]">
           Active compounds in plants
         </legend>
 
-        <ActiveCompundBadge text="Apigenin" />
-        <ActiveCompundBadge text="Bisabolol" />
-        <ActiveCompundBadge text="Chamazulene" />
-        <ActiveCompundBadge text="Flavonoids" />
+        {activeCompunds.map((elem) => {
+          return <ActiveCompundBadge text={elem} />;
+        })}
       </fieldset>
       <fieldset className="w-full h-max p-3 flex items-center justify-evenly glassmorphism rounded-lg shadow-lg flex-wrap gap-1 gap-y-2">
         <legend className="text-primary px-3 font-medium text-[14px]">
           Therapeutic properties in plants
         </legend>
 
-        <ActiveCompundBadge text="Relaxant" />
-        <ActiveCompundBadge text="Digestive aid" />
-        <ActiveCompundBadge text="Anti-inflammatory" />
-        <ActiveCompundBadge text="Antispasmodic" />
+        {therapeutics.map((elem) => {
+          return <ActiveCompundBadge text={elem} />;
+        })}
       </fieldset>
       <fieldset className="w-full h-max p-3 flex items-center justify-evenly glassmorphism rounded-lg shadow-lg flex-wrap gap-1 gap-y-2">
         <legend className="text-primary px-3 font-medium text-[14px]">
           Dosage Form
         </legend>
 
-        <ActiveCompundBadge text="Tea" />
-        <ActiveCompundBadge text="Oil" />
-        <ActiveCompundBadge text="Capsules" />
-        <ActiveCompundBadge text="Tinctures" />
-
+        {dosages.map((elem) => {
+          return <ActiveCompundBadge text={elem} />;
+        })}
       </fieldset>
     </div>
   );
