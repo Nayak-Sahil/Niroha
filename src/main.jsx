@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import ExplorePlants from './ExplorePlants/ExplorePlants.jsx'
 import LandingModel from './Landing/LandingModel.jsx'
+import ModelViewer from './Landing/ModelViewer.jsx'
+import PlantDetails from './ExplorePlants/PlantDetails.jsx'
 
 const router = createBrowserRouter([
   {
@@ -17,11 +19,20 @@ const router = createBrowserRouter([
       },
       {
         path: "explore-plants",
-        element: <ExplorePlants />
+        children: [
+          {
+            path: "",
+            element: <ExplorePlants />,
+          },
+          {
+            path: ":plantsID",
+            element: <PlantDetails />
+          }
+        ]
       },
       {
         path: "/virtual-farm",
-        element: "Virtual Farm"
+        element: <ModelViewer />
       },
       {
         path: "/register",
