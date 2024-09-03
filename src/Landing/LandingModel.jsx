@@ -9,7 +9,7 @@ import FlowerPot from "../assets/icons/FlowerPot.png"
 
 export default function LandingModel() {
   return (
-    <main className="h-[90vh] flex justify-evenly items-center bg-[url('https://www.3daistudio.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FBackground.86dd7208.png&w=3840&q=75')]">
+    <main className="h-[90vh] flex justify-evenly items-center bg-[url('https://www.3daistudio.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FBackground.86dd7208.png&w=3840&q=75')] bg-top">
       <div className="relative w-[40%] h-max">
         <Badge
           className="absolute -top-16 left-0 text-secondary-foreground"
