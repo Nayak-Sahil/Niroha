@@ -22,6 +22,18 @@ const router = createBrowserRouter([
         children: [
           {
             path: "",
+            loader: async ({ request }) => {
+              try {
+                const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/limit/8`);
+                if (response.status === 200) {
+                  const result = await response.json();
+                  return result;
+                } else throw Error("Unable to fetch plants");
+              } catch (err) {
+                console.error(err.message);
+                return [];
+              }
+            },
             element: <ExplorePlants />,
           },
           {
