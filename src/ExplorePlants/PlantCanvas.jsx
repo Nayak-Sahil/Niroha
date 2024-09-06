@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import PlantModel from "./PlantModel";
 import AloveraModel from "@/ModelView/AloveraModel";
+import { useLocation } from "react-router-dom";
 
-export default function PlantCanvas({file}) {
+export default function PlantCanvas({ file, dayNightMode }) {
+  console.warn(dayNightMode);
+  const param = useLocation();
   return (
     <Canvas
       camera={{ position: [-5, 5, 0] }}
       style={{
-        width: "450px",
-        height: "450px",
+        width: "300px",
+        height: "300px",
       }}
     >
       <ambientLight intensity={0.5} />
@@ -20,13 +23,21 @@ export default function PlantCanvas({file}) {
         maxPolarAngle={Math.PI / 2}
         autoRotate={true}
         autoRotateSpeed={1}
-        // maxDistance={6}
-        // minDistance={5}
+        maxDistance={6}
+        minDistance={5}
       />
-      <group scale={5}>
-        <AloveraModel file={file} />
+      <group scale={3}>
+        <AloveraModel
+          plantId={param.pathname.substring(
+            param.pathname.lastIndexOf("/") + 1
+          )}
+          file={file}
+        />
       </group>
-      <Environment preset="sunset" /> //! For sunlight and night mode
+      {
+        dayNightMode == true ? <Environment preset="sunset" /> : "" //! For sunlight and night mode
+      
+      }
     </Canvas>
   );
 }

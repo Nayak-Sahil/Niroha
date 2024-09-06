@@ -16,14 +16,14 @@ export default function PlantBasic({size, region, climate, sunlight, soil}) {
 
 export const BasicDetailsCard = ({icon, title, description}) => {
   return (
-    <div className="w-full h-max p-3 flex items-center glassmorphism rounded-lg shadow-lg">
+    <div className="w-full h-[80px] p-3 flex items-center glassmorphism rounded-lg shadow-lg">
       <Badge
         className="glassmorphism text-white text-sm p-[10px] hover:text-black hover:bg-white cursor-pointer rounded-full"
         variant="secondary"
       >
         {icon}
       </Badge>
-      <div className="h-full flex flex-col font-medium text-white ml-3">
+      <div className="h-full flex flex-col font-medium justify-center text-white ml-3">
         <p className="text-sm text-primary">{title}</p>
         <p className="text-[14px]">{description}</p>
       </div>

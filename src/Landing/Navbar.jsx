@@ -47,11 +47,7 @@ export default function Navbar() {
         isPlantDataPage: true,
         link: "/explore-plants",
         plantData: {
-          scientificName: "Matricaria chamomilla",
           commonName: ["Chamomile", "German Chamomile"],
-          family: "Asteraceae",
-          genus: "Matricaria",
-          species: "M. chamomilla",
         },
       });
     } else {
@@ -65,7 +61,7 @@ export default function Navbar() {
       {/* <header className="w-full sticky top-0 flex h-16 items-center gap-4 px-4 md:px-6 bg-gray-300 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-5 shadow-md"> */}
       <div className="w-[450px] h-full flex items-center">
         <img src={NirohaLog} className="pl-5 mr-2" width={55} alt="NirohaLogo" />
-        <p className="text-white font-medium">{pageData.isPlantDataPage ? pageData.plantData.scientificName : ""}</p>
+        {/* <p className="text-white font-medium">{pageData.isPlantDataPage ? pageData.plantData.scientificName : ""}</p> */}
       </div>
       <nav className="w-full hidden flex-col justify-end gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
         {navListArr.map((list, index) => {

@@ -32,6 +32,7 @@ export default function PlantDetails() {
             images={(plantData.ai_images != undefined && plantData.org_images != undefined) ? [...plantData.ai_images, ...plantData.org_images] : undefined}
             videos={plantData.videos}
             models={plantData.models}
+            plantName={plantData.common_names[0]}
           />
         </section>
         <PlantMedicinal

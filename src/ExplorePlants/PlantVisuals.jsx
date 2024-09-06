@@ -6,6 +6,7 @@ import {
   Images,
   MoonStar,
   Sprout,
+  Sun,
   TvMinimalPlay,
   Video,
 } from "lucide-react";
@@ -31,11 +32,18 @@ import ModelCanvas from "@/Landing/ModelCanvas";
 import CommingSoon from "../assets/CommingSoon.png";
 import PlantCanvas from "./PlantCanvas";
 
-export default function PlantVisuals({ images, videos, models }) {
+export default function PlantVisuals({ images, videos, models, plantName }) {
   const [visualMode, setVisualMode] = useState({
     mode: "Images",
     file: images,
   });
+
+  const [isDayMode, setDayNightMode] = useState(true);
+
+  function updateDayNightMode(){
+    console.info(isDayMode);
+    setDayNightMode(!isDayMode);
+  }
 
   const updateVisualMode = (mode) => {
     const updatedVisualMode = { mode: mode };
@@ -56,7 +64,7 @@ export default function PlantVisuals({ images, videos, models }) {
   };
 
   return (
-    <section className="relative w-[400px] h-[400px] glassmorphism border-none rounded-lg shadow-lg p-4 flex flex-col justify-between">
+    <section className="relative w-[400px] h-[400px] glassmorphism border-none rounded-lg shadow-lg p-4 flex flex-col">
       <div className="w-full h-max flex justify-between items-center">
         <div>
           <VisualModeButton
@@ -75,19 +83,24 @@ export default function PlantVisuals({ images, videos, models }) {
             icon={<TvMinimalPlay className="h-4 w-4" />}
           />
         </div>
-        <VisualModeButton
+        {
+          visualMode.mode == "3D View" ? <VisualModeButton
           hoverText="Day/Night Mode"
           isDayNightMode={true}
-          icon={<MoonStar className="h-4 w-4" />}
-        />
+          setDayNightMode={updateDayNightMode}
+          icon={isDayMode ? <MoonStar className="h-4 w-4" /> : <Sun className="h-4 w-4" />} /> : ""
+        }
+        
       </div>
-      <VisualCarousel visualMode={visualMode} />
+      <div className="w-full h-[95%] flex items-center justify-center">
+        <VisualCarousel visualMode={visualMode} isDayMode={isDayMode} />
+      </div>
       <Badge
         className="absolute -bottom-3 left-[50%] -translate-x-[50%] w-max mx-auto px-2 py-1"
         variant="secondary"
       >
         <Sprout className="h-4 w-4 mr-1" />
-        Matricaria chamomilla
+        {plantName}
       </Badge>
     </section>
   );
@@ -108,7 +121,8 @@ export const PlantVideos = ({ file }) => {
   );
 };
 
-export const VisualCarousel = ({ visualMode }) => {
+export const VisualCarousel = ({ visualMode, isDayMode }) => {
+  console.warn(isDayMode);
   return (
     <Carousel className="w-[300px] mb-2 max-w-xs mx-auto ">
       <CarouselContent>
@@ -120,11 +134,11 @@ export const VisualCarousel = ({ visualMode }) => {
               ) : visualMode.mode == "Videos" ? (
                 <PlantVideos file={visualMode.file} />
               ) : (
-                <PlantCanvas file={visualMode.file} />
+                <PlantCanvas file={visualMode.file} dayNightMode={isDayMode} />
               )}
             </div>
           </CarouselItem>
-        )) : <img className="mx-auto mb-28" src={CommingSoon} width={200} />}
+        )) : (visualMode.mode == "3D View") ? <PlantCanvas dayNightMode={isDayMode} /> : <img className="mx-auto mb-28" src={CommingSoon} width={200} />}
       </CarouselContent>
       <CarouselPrevious className="glassmorphism  ml-8" />
       <CarouselNext className="glassmorphism  mr-8" />
@@ -137,6 +151,7 @@ export const VisualModeButton = ({
   isDayNightMode,
   hoverText,
   updateVisualMode,
+  setDayNightMode
 }) => {
   return (
     <TooltipProvider>
@@ -144,7 +159,7 @@ export const VisualModeButton = ({
         <TooltipTrigger>
           <Badge
             onClick={() => {
-              updateVisualMode(hoverText);
+              setDayNightMode != undefined ? setDayNightMode() : updateVisualMode(hoverText);
             }}
             className={`glassmorphism text-white text-sm p-[10px] hover:text-black hover:bg-white cursor-pointer rounded-full ${
               !isDayNightMode ? "mr-3" : ""
